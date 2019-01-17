@@ -2,8 +2,8 @@ package me.matetoes.libdockvisibility;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -16,96 +16,62 @@ import java.net.URL;
 
 public class DockVisibilityTester extends Application {
 
+    @FXML
+    public javafx.scene.control.Button hideButton;
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/test.fxml"));
         primaryStage.setTitle("Testing");
         primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    public void handleHide() {
-
-    }
-}
-
-class TrayTest extends Application {
-
-    private boolean firstTime;
-    private TrayIcon trayIcon;
-
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage stage) {
-        createTrayIcon(stage);
-        firstTime = true;
         Platform.setImplicitExit(false);
-        Scene scene = new Scene(new Group(), 800, 600);
-        stage.setScene(scene);
-        stage.show();
-
+        createTrayIcon(primaryStage);
+        primaryStage.show();
     }
 
     private void createTrayIcon(final Stage stage) {
         if (SystemTray.isSupported()) {
-            // get the SystemTray instance
-            SystemTray tray = SystemTray.getSystemTray();
-            // load an image
-            java.awt.Image image = null;
-            try {
+            SystemTray tray = SystemTray.getSystemTray(); // get the SystemTray instance
+
+            Image icon = null;
+            try { // load an image
                 URL url = new URL("http://www.digitalphotoartistry.com/rose1.jpg");
-                image = ImageIO.read(url);
+                icon = ImageIO.read(url);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
 
+            stage.setOnCloseRequest(e -> hide(stage)); //hide instead of close
 
-            stage.setOnCloseRequest(t -> hide(stage));
-            // create a action listener to listen for default action executed on the tray icon
-            final ActionListener closeListener = e -> System.exit(0);
+            // to be added on "show" MenuItem and trayIcon itself
+            ActionListener showListener = e -> show(stage);
 
-            ActionListener showListener = e -> Platform.runLater(stage::show);
-            // create a popup menu
-            PopupMenu popup = new PopupMenu();
+            PopupMenu popup = new PopupMenu(); // create a popup menu
 
             MenuItem showItem = new MenuItem("Show");
             showItem.addActionListener(showListener);
-            popup.add(showItem);
 
             MenuItem closeItem = new MenuItem("Close");
-            closeItem.addActionListener(closeListener);
+            closeItem.addActionListener(e -> System.exit(0));
+
+            popup.add(showItem);
+            popup.addSeparator();
             popup.add(closeItem);
-            /// ... add other items
-            // construct a TrayIcon
-            assert image != null;
-            trayIcon = new TrayIcon(image, "Title", popup);
-            // set the TrayIcon properties
+
+            assert icon != null;
+            TrayIcon trayIcon = new TrayIcon(icon, "Test", popup); // construct a TrayIcon
+            trayIcon.setImageAutoSize(true);
             trayIcon.addActionListener(showListener);
-            // ...
-            // add the tray image
-            try {
+
+            try { // add the tray image
                 tray.add(trayIcon);
             } catch (AWTException e) {
                 e.printStackTrace();
             }
-            // ...
-        }
-    }
-
-    private void showProgramIsMinimizedMsg() {
-        if (firstTime) {
-            trayIcon.displayMessage("Some message.",
-                    "Some other message.",
-                    TrayIcon.MessageType.INFO);
-            firstTime = false;
         }
     }
 
@@ -113,10 +79,23 @@ class TrayTest extends Application {
         Platform.runLater(() -> {
             if (SystemTray.isSupported()) {
                 stage.hide();
-                showProgramIsMinimizedMsg();
+                DockVisibility.INSTANCE.hide();
             } else {
                 System.exit(0);
             }
         });
     }
+
+    private void show(final Stage stage) {
+        Platform.runLater(() -> {
+            stage.show();
+            DockVisibility.INSTANCE.show();
+        });
+    }
+
+    public void handleHide() {
+        Stage stage = (Stage) hideButton.getScene().getWindow();
+        hide(stage);
+    }
 }
+

@@ -22,16 +22,16 @@ task compileObjC(type: Exec) { //compiles obj-c project to dylib if on macOS
     doFirst {
         if (System.getProperty("os.name").toLowerCase().contains("mac")) {
             new File("${projectDir}/src/main/resources/darwin/libDockVisibility.dylib").delete()
-            commandLine "xcodebuild", "-project", 
-                    "${projectDir}/src/main/objective-c/libDockVisibility/libDockVisibility.xcodeproj", 
-                    "-scheme", "DockVisibility", 
+            commandLine "xcodebuild", "-project",
+                    "${projectDir}/src/main/objective-c/libDockVisibility/DockVisibility.xcodeproj",
+                    "-scheme", "DockVisibility",
                     "-configuration", "Debug", "CONFIGURATION_BUILD_DIR=${buildDir}/obj-c/"
             copy {
                 from new File(buildDir, "obj-c/libDockVisibility.dylib")
-                into new File(projectDir, "src/main/resources/darwin/")
+                into new File(projectDir, "src/main/resources/darwin")
             }
         } else {
-            throw new GradleException("Can only compile XCode projects on macOS.\n" +
+            throw new GradleException("Can only compile Xcode projects on macOS.\n" +
                     "You can get a precompiled .dylib in " +
                     "${projectDir}/src/main/resources/darwin/libDockVisibility.dylib")
         }

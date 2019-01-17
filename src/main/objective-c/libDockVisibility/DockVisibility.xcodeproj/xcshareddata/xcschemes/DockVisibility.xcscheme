@@ -14,9 +14,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "33071305F05B4A5B6872C770"
-               BuildableName = "liblibDockVisibility.dylib"
-               BlueprintName = "libDockVisibility"
-               ReferencedContainer = "container:libDockVisibility.xcodeproj">
+               BuildableName = "DockVisibility"
+               BlueprintName = "DockVisibility"
+               ReferencedContainer = "container:DockVisibility.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "33071305F05B4A5B6872C770"
-            BuildableName = "libDockVisibility"
-            BlueprintName = "libDockVisibility"
-            ReferencedContainer = "container:libDockVisibility.xcodeproj">
+            BuildableName = "DockVisibility"
+            BlueprintName = "DockVisibility"
+            ReferencedContainer = "container:DockVisibility.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>

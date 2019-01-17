@@ -11,7 +11,7 @@
           fx:controller="me.matetoes.libdockvisibility.DockVisibilityTester">
     <Text styleClass="title" text="Testing"
           GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="0"/>
-    <Button onAction="#handleHide" text="Hide"
+    <Button fx:id="hideButton" onAction="#handleHide" text="Hide"
             GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
         <GridPane.margin>
             <Insets top="12.0"/>

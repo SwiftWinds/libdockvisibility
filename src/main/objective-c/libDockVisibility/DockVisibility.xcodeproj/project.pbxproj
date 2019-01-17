@@ -9,15 +9,27 @@
 /* Begin PBXBuildFile section */
 		3307100AE84A30507EA2DA64 /* DockManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3307195925E6CDF48CAD89DA /* DockManager.h */; };
 		330711694B0BAA2F0FC33AE6 /* DockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 33071D12BA3856539D2B0D75 /* DockManager.m */; };
+		C9EFA0BD21F0FBA4006344C9 /* DockVisibility.h in Headers */ = {isa = PBXBuildFile; fileRef = C9EFA0BC21F0FBA4006344C9 /* DockVisibility.h */; };
+		C9EFA0BF21F0FBA4006344C9 /* DockVisibility.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EFA0BE21F0FBA4006344C9 /* DockVisibility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3307195925E6CDF48CAD89DA /* DockManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockManager.h; sourceTree = "<group>"; };
 		33071D12BA3856539D2B0D75 /* DockManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DockManager.m; sourceTree = "<group>"; };
+		C9EFA0BA21F0FBA4006344C9 /* DockVisibility.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = DockVisibility.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9EFA0BC21F0FBA4006344C9 /* DockVisibility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DockVisibility.h; sourceTree = "<group>"; };
+		C9EFA0BE21F0FBA4006344C9 /* DockVisibility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DockVisibility.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3307154C632E4616DD091C19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9EFA0B821F0FBA3006344C9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -30,6 +42,7 @@
 		3307127657ECDE1282E2B35C /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				C9EFA0BA21F0FBA4006344C9 /* DockVisibility.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -37,18 +50,28 @@
 		33071E43BCC1FC846722FE20 = {
 			isa = PBXGroup;
 			children = (
+				C9EFA0BB21F0FBA4006344C9 /* DockVisibility */,
 				3307127657ECDE1282E2B35C /* Products */,
-				33071EC0E327149CD0088405 /* libDockVisibility */,
+				33071EC0E327149CD0088405 /* DockVisibility */,
 			);
 			sourceTree = "<group>";
 		};
-		33071EC0E327149CD0088405 /* libDockVisibility */ = {
+		33071EC0E327149CD0088405 /* DockVisibility */ = {
 			isa = PBXGroup;
 			children = (
 				3307195925E6CDF48CAD89DA /* DockManager.h */,
 				33071D12BA3856539D2B0D75 /* DockManager.m */,
 			);
-			path = libDockVisibility;
+			path = DockVisibility;
+			sourceTree = "<group>";
+		};
+		C9EFA0BB21F0FBA4006344C9 /* DockVisibility */ = {
+			isa = PBXGroup;
+			children = (
+				C9EFA0BC21F0FBA4006344C9 /* DockVisibility.h */,
+				C9EFA0BE21F0FBA4006344C9 /* DockVisibility.m */,
+			);
+			path = DockVisibility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -62,12 +85,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C9EFA0B621F0FBA3006344C9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9EFA0BD21F0FBA4006344C9 /* DockVisibility.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		33071305F05B4A5B6872C770 /* libDockVisibility */ = {
+		33071305F05B4A5B6872C770 /* DockVisibility */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 330713A9DA4AC6B18E989BCC /* Build configuration list for PBXNativeTarget "libDockVisibility" */;
+			buildConfigurationList = 330713A9DA4AC6B18E989BCC /* Build configuration list for PBXNativeTarget "DockVisibility" */;
 			buildPhases = (
 				330716D36211A4E176F7E114 /* Headers */,
 				330719F223DB2C5821163E95 /* Sources */,
@@ -77,8 +108,25 @@
 			);
 			dependencies = (
 			);
-			name = libDockVisibility;
-			productName = libDockVisibility;
+			name = DockVisibility;
+			productName = DockVisibility;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		C9EFA0B921F0FBA3006344C9 /* DockVisibility */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9EFA0C221F0FBA4006344C9 /* Build configuration list for PBXNativeTarget "DockVisibility" */;
+			buildPhases = (
+				C9EFA0B621F0FBA3006344C9 /* Headers */,
+				C9EFA0B721F0FBA3006344C9 /* Sources */,
+				C9EFA0B821F0FBA3006344C9 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DockVisibility;
+			productName = DockVisibility;
+			productReference = C9EFA0BA21F0FBA4006344C9 /* DockVisibility.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -88,8 +136,14 @@
 			isa = PBXProject;
 			attributes = {
 				ORGANIZATIONNAME = "Matías";
+				TargetAttributes = {
+					C9EFA0B921F0FBA3006344C9 = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
-			buildConfigurationList = 330719BCC566BF4465ACC7FD /* Build configuration list for PBXProject "libDockVisibility" */;
+			buildConfigurationList = 330719BCC566BF4465ACC7FD /* Build configuration list for PBXProject "DockVisibility" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -101,7 +155,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				33071305F05B4A5B6872C770 /* libDockVisibility */,
+				33071305F05B4A5B6872C770 /* DockVisibility */,
+				C9EFA0B921F0FBA3006344C9 /* DockVisibility */,
 			);
 		};
 /* End PBXProject section */
@@ -112,6 +167,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				330711694B0BAA2F0FC33AE6 /* DockManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9EFA0B721F0FBA3006344C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9EFA0BF21F0FBA4006344C9 /* DockVisibility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,7 +298,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
-				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/libDockVisibility.dylib";
+				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/DockVisibility.dylib";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -247,28 +310,62 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
-				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/libDockVisibility.dylib";
+				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/DockVisibility.dylib";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
+		C9EFA0C021F0FBA4006344C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C9EFA0C121F0FBA4006344C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		330713A9DA4AC6B18E989BCC /* Build configuration list for PBXNativeTarget "libDockVisibility" */ = {
+		330713A9DA4AC6B18E989BCC /* Build configuration list for PBXNativeTarget "DockVisibility" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				33071DB1843D3AAE6872CCE9 /* Debug */,
 				33071B6B67500DCA50C08F3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		330719BCC566BF4465ACC7FD /* Build configuration list for PBXProject "libDockVisibility" */ = {
+		330719BCC566BF4465ACC7FD /* Build configuration list for PBXProject "DockVisibility" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				330717B1415A95FC15AB5583 /* Debug */,
 				330719676CFCC0E0F0762196 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9EFA0C221F0FBA4006344C9 /* Build configuration list for PBXNativeTarget "DockVisibility" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9EFA0C021F0FBA4006344C9 /* Debug */,
+				C9EFA0C121F0FBA4006344C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

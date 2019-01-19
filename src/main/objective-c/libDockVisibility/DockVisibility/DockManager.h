@@ -14,6 +14,4 @@ void hide(void);
 
 void show(void);
 
-void debug(void);
-
 @end

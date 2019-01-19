@@ -1,39 +1,76 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'maven-publish'
     id 'se.patrikerdes.use-latest-versions' version '0.2.7'
     id 'com.github.ben-manes.versions' version '0.20.0'
 }
 
+//apply plugin: 'com.novoda.bintray-release'
+
 group 'me.matetoes.libdockvisibility'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+def sourceCompatibility = 1.8
+//def resourcesDir = "${projectDir}/src/main/resources"
 
 repositories {
+//    google()
+    jcenter()
     mavenCentral()
 }
 
+/*publish {
+    def groupProjectID = 'me.matetoes.libdockvisibility'
+    def artifactProjectID = 'libdockvisibility'
+    def publishVersionID = '1.0.0'
+
+    userOrg = 'matetoes'
+    repoName = 'libdockvisibility'
+    groupId = groupProjectID
+    artifactId = artifactProjectID
+    publishVersion = publishVersionID
+    desc = 'A simple JNA library to hide/show the macOS dock icon'
+    website = 'https://github.com/SwiftWinds/libdockvisibility'
+}*/
+
+jar {
+    manifest {
+        attributes('Implementation-Title': project.name,
+                'Implementation-Version': project.version)
+    }
+}
+
 dependencies {
-    testCompile 'junit:junit:4.13-beta-1'
-    compile 'net.java.dev.jna:jna:5.2.0'
+//    testCompile 'junit:junit:4.13-beta-1'
+    implementation 'net.java.dev.jna:jna:5.2.0'
+//    classpath 'com.novoda:bintray-release:0.9.0'
 }
 
 task compileObjC(type: Exec) { //compiles obj-c project to dylib if on macOS
     doFirst {
         if (System.getProperty("os.name").toLowerCase().contains("mac")) {
             new File("${projectDir}/src/main/resources/darwin/libDockVisibility.dylib").delete()
+            new File("${projectDir}/src/test/resources/darwin/libDockVisibility.dylib").delete()
             commandLine "xcodebuild", "-project",
                     "${projectDir}/src/main/objective-c/libDockVisibility/DockVisibility.xcodeproj",
                     "-scheme", "DockVisibility",
                     "-configuration", "Debug", "CONFIGURATION_BUILD_DIR=${buildDir}/obj-c/"
-            copy {
-                from new File(buildDir, "obj-c/libDockVisibility.dylib")
-                into new File(projectDir, "src/main/resources/darwin")
-            }
         } else {
             throw new GradleException("Can only compile Xcode projects on macOS.\n" +
                     "You can get a precompiled .dylib in " +
                     "${projectDir}/src/main/resources/darwin/libDockVisibility.dylib")
         }
+    }
+    doLast {
+        ["${projectDir}/src/main/resources/darwin", "${projectDir}/src/test/resources/darwin"].each { dest ->
+            copy {
+                from new File("${buildDir}/obj-c/libDockVisibility.dylib")
+                into dest
+            }
+        }
+//    copy {
+//        from new File("${buildDir}/obj-c/libDockVisibility.dylib")
+//        into new File("${projectDir}/src/main/resources/darwin")
+//    }
     }
 }

@@ -89,6 +89,7 @@ public class DockVisibilityTester extends Application {
     private void show(final Stage stage) {
         Platform.runLater(() -> {
             stage.show();
+            stage.toFront();
             DockVisibility.INSTANCE.show();
         });
     }

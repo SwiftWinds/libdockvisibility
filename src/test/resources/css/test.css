@@ -9,8 +9,3 @@
     -fx-hgap: 10;
     -fx-vgap: 10;
 }
-
-#enterName {
-    -fx-font-family: "Helvetica Neue";
-    -fx-background-color: lightblue;
-}

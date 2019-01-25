@@ -90,6 +90,7 @@ public class DockVisibilityTester extends Application {
         Platform.runLater(() -> {
             stage.show();
             stage.toFront();
+            stage.requestFocus();
             DockVisibility.INSTANCE.show();
         });
     }

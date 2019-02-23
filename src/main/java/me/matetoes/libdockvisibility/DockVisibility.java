@@ -1,30 +1,32 @@
 package me.matetoes.libdockvisibility;
 
-import com.sun.jna.Library;
 import com.sun.jna.Native;
 
-public interface DockVisibility extends Library {
-
-    /**
-     * Singleton of DockVisibility class. To run show or hide, call
-     * <code>
-     * DockVisibility.INSTANCE.show();
-     * </code>
-     * or
-     * <code>
-     * DockVisibility.INSTANCE.hide();
-     * </code>
-     * respectively.
-     */
-    DockVisibility INSTANCE = Native.load("DockVisibility", DockVisibility.class);
+/**
+ * Show and hide the macOS dock icon.
+ * Has two methods to show and hide,
+ * <code>
+ * DockVisibility.show();
+ * </code>
+ * and
+ * <code>
+ * DockVisibility.hide();
+ * </code>
+ * respectively.
+ */
+public class DockVisibility {
 
     /**
      * Hides dock icon from macOS dock.
      */
-    void hide();
+    public static native void hide();
 
     /**
      * Shows dock icon from macOS dock.
      */
-    void show();
+    public static native void show();
+
+    static {
+        Native.register("DockVisibility");
+    }
 }

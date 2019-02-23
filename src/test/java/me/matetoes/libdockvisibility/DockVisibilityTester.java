@@ -79,7 +79,7 @@ public class DockVisibilityTester extends Application {
         Platform.runLater(() -> {
             if (SystemTray.isSupported()) {
                 stage.hide();
-                DockVisibility.INSTANCE.hide();
+                DockVisibility.hide();
             } else {
                 System.exit(0);
             }
@@ -90,7 +90,7 @@ public class DockVisibilityTester extends Application {
         Platform.runLater(() -> {
             stage.show();
             stage.toFront();
-            DockVisibility.INSTANCE.show();
+            DockVisibility.show();
         });
     }
 

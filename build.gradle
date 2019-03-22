@@ -8,10 +8,9 @@ plugins {
 //apply plugin: 'com.novoda.bintray-release'
 
 group 'me.matetoes.libdockvisibility'
-version '1.0-SNAPSHOT'
+version '1.0.2'
 
 def sourceCompatibility = 1.8
-//def resourcesDir = "${projectDir}/src/main/resources"
 
 repositories {
 //    google()
@@ -41,7 +40,6 @@ jar {
 }
 
 dependencies {
-//    testCompile 'junit:junit:4.13-beta-1'
     implementation 'net.java.dev.jna:jna:5.2.0'
 //    classpath 'com.novoda:bintray-release:0.9.0'
 }
@@ -68,9 +66,5 @@ task compileObjC(type: Exec) { //compiles obj-c project to dylib if on macOS
                 into dest
             }
         }
-//    copy {
-//        from new File("${buildDir}/obj-c/libDockVisibility.dylib")
-//        into new File("${projectDir}/src/main/resources/darwin")
-//    }
     }
 }
